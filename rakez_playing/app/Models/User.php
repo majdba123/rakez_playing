@@ -46,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public static function phoneExists($phone): bool
+    {
+        return static::where('phone', $phone)->exists();
+    }
 }
