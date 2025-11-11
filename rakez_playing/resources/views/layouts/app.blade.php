@@ -23,9 +23,14 @@
                     <a href="{{ route('profile') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition duration-200">
                         <i class="fas fa-user mr-2"></i>Profile
                     </a>
-                    <a href="{{ route('logout') }}" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition duration-200">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                    </a>
+                    <div class="text-center">
+                        <form action="{{ route('logout') }}" method="POST" class="inline-block">
+                            @csrf
+                            <button type="submit" class="text-red-600 hover:text-red-700 font-medium">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 @endauth
             </div>

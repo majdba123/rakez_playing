@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\GameHelper;
 
 class UserController extends Controller
 {
@@ -32,13 +33,17 @@ class UserController extends Controller
     /**
      * Show home page
      */
+    // In UserController.php - update the showHome method
     public function showHome(Request $request)
     {
         $user = Auth::user();
         $user_exists = session('user_exists', false);
-        return view('home', compact('user', 'user_exists'));
+        
+        // Check if user has played the game
+        $has_played_game = $user->hasPlayedGame();
+        
+        return view('home', compact('user', 'user_exists', 'has_played_game'));
     }
-
     /**
      * Show profile page
      */
@@ -124,6 +129,6 @@ class UserController extends Controller
     {
         Auth::logout();
         session()->flush();
-        return redirect('/');
+        return redirect('/register');
     }
 }

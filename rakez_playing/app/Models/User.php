@@ -52,4 +52,29 @@ class User extends Authenticatable
     {
         return static::where('phone', $phone)->exists();
     }
+
+
+
+    public function userProjects()
+    {
+        return $this->hasMany(UserProject::class);
+    }
+
+    /**
+     * Get the projects selected by the user
+     */
+    public function selectedProjects()
+    {
+        return $this->belongsToMany(Projects::class, 'user_projects')
+                    ->withTimestamps()
+                    ->withPivot('selected_at');
+    }
+
+    /**
+     * Check if user has already played the game
+     */
+    public function hasPlayedGame()
+    {
+        return $this->userProjects()->exists();
+    }
 }

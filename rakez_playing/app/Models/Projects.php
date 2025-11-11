@@ -68,4 +68,11 @@ class Projects extends Model
         
         return number_format($this->value_discount, 2);
     }
+
+    public function selectedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'user_projects')
+                    ->withTimestamps()
+                    ->withPivot('selected_at');
+    }
 }

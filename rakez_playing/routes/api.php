@@ -3,14 +3,9 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GameController;
 
 
 
 
-Route::post('/users', [UserController::class, 'checkAndStore']);
-Route::post('/login', [UserController::class, 'login']);
 
-// Or group routes with middleware
-Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/profile', [UserController::class, 'profile']);
-});
