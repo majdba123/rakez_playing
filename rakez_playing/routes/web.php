@@ -12,9 +12,13 @@ Route::get('/', function () {
 });
 
 // Public routes
-Route::get('/register', [UserController::class, 'showRegister'])->name('register');
-Route::post('/users', [UserController::class, 'checkAndStore']);
+/*Route::get('/register', [UserController::class, 'showRegister'])->name('register');
+Route::post('/users', [UserController::class, 'checkAndStore']);*/
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/', [UserController::class, 'showLogin'])->name('login');
+Route::post('/login', [UserController::class, 'login'])->name('login.submit');
+
 
 // Authenticated user routes (for all users)
 Route::middleware(['auth'])->group(function () {
@@ -26,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     // Admin dashboard
     Route::get('/dashboard', [UserController::class, 'showAdminDashboard'])->name('dashboard');
-    
+
     // Projects CRUD routes
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');

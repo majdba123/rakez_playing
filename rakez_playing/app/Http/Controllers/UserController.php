@@ -3,123 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Projects;
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Helpers\GameHelper;
 
 class UserController extends Controller
 {
     /**
-     * Check if user is admin
+     * Show login form
      */
-    private function checkAdmin()
+    public function showLogin()
     {
-        if (!Auth::check() || Auth::user()->type != 1) {
-            abort(403, 'Unauthorized access. Admin privileges required.');
-        }
+        return view('auth.login');
     }
 
     /**
-     * Show registration form
+     * Handle user login - API style
      */
-    public function showRegister()
-    {
-        return view('auth.register');
-    }
-
-    /**
-     * Show home page
-     */
-    // In UserController.php - update the showHome method
-    public function showHome(Request $request)
-    {
-        $user = Auth::user();
-        $user_exists = session('user_exists', false);
-        
-        // Check if user has played the game
-        $has_played_game = $user->hasPlayedGame();
-        
-        return view('home', compact('user', 'user_exists', 'has_played_game'));
-    }
-    /**
-     * Show profile page
-     */
-    public function showProfile()
-    {
-        $user = Auth::user();
-        return view('auth.profile', compact('user'));
-    }
-
-    /**
-     * Show admin dashboard
-     */
-    public function showAdminDashboard()
-    {
-        $this->checkAdmin();
-        
-        $users = User::all();
-        $projectsCount = Projects::count();
-        return view('admin.dashboard', compact('users', 'projectsCount'));
-    }
-
-    /**
-     * Check phone and login or register user
-     */
-    public function checkAndStore(Request $request): JsonResponse
+    public function login(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
         ]);
 
-        // Check if phone already exists
-        $existingUser = User::where('phone', $request->phone)->first();
-        
-        if ($existingUser) {
-            // Auto login if user exists
-            Auth::login($existingUser);
-            session(['user_exists' => true]);
-            
-            // Check if user is admin (type = 1)
-            if ($existingUser->type == 1) {
-                return response()->json([
-                    'success' => true,
-                    'user_exists' => true,
-                    'is_admin' => true,
-                    'redirect' => route('admin.dashboard')
-                ]);
-            }
-            
-            // Regular existing user
-            return response()->json([
-                'success' => true,
-                'user_exists' => true,
-                'is_admin' => false,
-                'redirect' => route('home')
+        $user = User::where('phone', $request->phone)->first();
+
+        if (!$user) {
+            return back()->withErrors([
+                'phone' => 'رقم الجوال غير مسجل في النظام.',
             ]);
         }
 
-        // Create new user (always regular user)
-        $user = User::create([
-            'name' => $request->name,
-            'phone' => $request->phone,
-            'password' => Hash::make(rand(100000, 999999)),
-            'type' => 0, // Always set as regular user
+        // Check if user is admin using model method
+        if ($user->isAdmin()) {
+            Auth::login($user);
+            return redirect()->route('admin.dashboard');
+        }
+
+        // If user exists but not admin
+        return back()->withErrors([
+            'phone' => 'أنت لست مسؤولاً في النظام.',
         ]);
+    }
 
-        // Auto login after registration
-        Auth::login($user);
-        session(['user_exists' => false]);
+    /**
+     * Show admin dashboard (Admin only)
+     */
+    public function showAdminDashboard()
+    {
+        if (!Auth::check() || !Auth::user()->isAdmin()) {
+            abort(403, 'Unauthorized access. Admin privileges required.');
+        }
 
-        return response()->json([
-            'success' => true,
-            'user_exists' => false,
-            'is_admin' => false,
-            'redirect' => route('home')
-        ], 201);
+        $users = User::all();
+        $projectsCount = \App\Models\Projects::count();
+        return view('admin.dashboard', compact('users', 'projectsCount'));
     }
 
     /**
@@ -129,6 +66,6 @@ class UserController extends Controller
     {
         Auth::logout();
         session()->flush();
-        return redirect('/register');
+        return redirect('/');
     }
 }

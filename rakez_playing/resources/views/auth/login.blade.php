@@ -1,81 +1,58 @@
 @extends('layouts.app')
 
+@section('title', 'تسجيل الدخول - RAKEZ العقارية')
+
 @section('content')
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-lg overflow-hidden p-6">
-    <div class="text-center mb-8">
-        <i class="fas fa-sign-in-alt text-4xl text-green-600 mb-4"></i>
-        <h2 class="text-2xl font-bold text-gray-800">Welcome Back</h2>
-        <p class="text-gray-600 mt-2">Sign in to your account</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div class="glass-effect rounded-3xl shadow-2xl overflow-hidden">
+            <div class="bg-gradient-to-br from-blue-600 to-purple-700 p-8 text-white text-center">
+                <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-user-shield text-3xl"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-2">لوحة المسؤول</h2>
+                <p class="text-blue-100">سجل الدخول بحساب المسؤول</p>
+            </div>
+
+            <div class="p-8">
+                <form method="POST" action="{{ route('login.submit') }}" class="space-y-6">
+                    @csrf
+
+                    @if($errors->any())
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-xl text-right">
+                            <i class="fas fa-exclamation-circle ml-2"></i>
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
+                    <!-- Phone Field -->
+                    <div class="space-y-2">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 text-right">
+                            <i class="fas fa-phone ml-2"></i>رقم الجوال
+                        </label>
+                        <input type="tel" id="phone" name="phone" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 text-right"
+                               placeholder="أدخل رقم الجوال المسجل"
+                               value="{{ old('phone') }}"
+                               autofocus>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-600 to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition duration-200 text-lg hover:from-blue-700 hover:to-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <i class="fas fa-sign-in-alt ml-2"></i>دخول المسؤول
+                    </button>
+
+                    <!-- Info Message -->
+                    <div class="text-center mt-4">
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-info-circle ml-2"></i>
+                            الدخول متاح فقط للمسؤولين المسجلين
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <form id="loginForm" class="space-y-6">
-        @csrf
-        
-        <!-- Phone Field -->
-        <div>
-            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
-                <i class="fas fa-phone mr-2"></i>Phone Number
-            </label>
-            <input type="tel" id="phone" name="phone" required 
-                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-200"
-                   placeholder="Enter your phone number">
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit" 
-                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 transform hover:scale-105">
-            <i class="fas fa-sign-in-alt mr-2"></i>Sign In
-        </button>
-
-        <!-- Register Link -->
-        <div class="text-center">
-            <p class="text-gray-600">Don't have an account? 
-                <a href="{{ route('register') }}" class="text-green-600 hover:text-green-700 font-semibold transition duration-200">
-                    <i class="fas fa-user-plus mr-1"></i>Create Account
-                </a>
-            </p>
-        </div>
-    </form>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing In...';
-    submitBtn.disabled = true;
-
-    try {
-        const formData = new FormData(this);
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            body: formData
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            showAlert('success', 'Welcome!', data.message);
-            setTimeout(() => {
-                window.location.href = data.redirect;
-            }, 1500);
-        } else {
-            showAlert('error', 'Error!', data.message);
-        }
-    } catch (error) {
-        showAlert('error', 'Error!', 'Something went wrong. Please try again.');
-    } finally {
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }
-});
-</script>
 @endsection
