@@ -527,15 +527,7 @@ document.getElementById('claimForm').addEventListener('submit', async function(e
         if (data.success) {
             closePhoneModal();
             loadingOverlay.classList.add('hidden');
-
-            let successMessage = 'مبروك! تم تسجيل فوزك بنجاح.';
-            if (data.winner.remaining_wins > 0) {
-                successMessage += ` متبقي لك ${data.winner.remaining_wins} فرص للفوز.`;
-            } else {
-                successMessage += ' لقد استخدمت جميع فرصك للفوز.';
-            }
-
-            showSuccessMessage(successMessage);
+            showSuccessMessage('مبروك! تم تسجيل فوزك بنجاح.');
         } else {
             loadingOverlay.classList.add('hidden');
             alert('خطأ: ' + data.message);
@@ -567,25 +559,11 @@ async function checkUserWins() {
         const winsResult = document.getElementById('winsResult');
 
         if (data.success) {
-            let statusMessage = '';
-            if (data.has_reached_limit) {
-                statusMessage = `<div class="bg-red-500/20 border border-red-400/30 rounded-2xl p-4 mb-4 text-center">
-                    <i class="fas fa-info-circle text-red-300 text-xl mb-2"></i>
-                    <p class="text-red-200">لقد وصلت إلى الحد الأقصى للفوز (3 مشاريع)</p>
-                </div>`;
-            } else {
-                statusMessage = `<div class="bg-green-500/20 border border-green-400/30 rounded-2xl p-4 mb-4 text-center">
-                    <i class="fas fa-info-circle text-green-300 text-xl mb-2"></i>
-                    <p class="text-green-200">متبقي لك ${data.remaining_wins} فرص للفوز</p>
-                </div>`;
-            }
-
             if (data.wins.length > 0) {
                 winsResult.innerHTML = `
                     <div class="bg-white/20 border border-white/30 rounded-2xl p-6">
-                        ${statusMessage}
                         <h4 class="text-xl font-bold text-white mb-4 text-center">
-                            <i class="fas fa-trophy text-yellow-400 ml-2"></i>عدد الفوز: ${data.total_wins}/3
+                            <i class="fas fa-trophy text-yellow-400 ml-2"></i>عدد الفوز: ${data.total_wins}
                         </h4>
                         <div class="space-y-4">
                             ${data.wins.map(win => `
@@ -609,7 +587,6 @@ async function checkUserWins() {
                     <div class="bg-yellow-500/20 border border-yellow-400/30 rounded-2xl p-6 text-center">
                         <i class="fas fa-info-circle text-yellow-300 text-2xl mb-2"></i>
                         <p class="text-yellow-200">لا توجد فوز مسجلة لهذا الرقم</p>
-                        <p class="text-yellow-200 mt-2">متبقي لك 3 فرص للفوز</p>
                     </div>
                 `;
             }
