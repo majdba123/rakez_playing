@@ -14,7 +14,7 @@ Route::get('/', function () {
 // Public routes
 /*Route::get('/register', [UserController::class, 'showRegister'])->name('register');
 Route::post('/users', [UserController::class, 'checkAndStore']);*/
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+//Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/', [UserController::class, 'showLogin'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
@@ -23,7 +23,7 @@ Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 // Authenticated user routes (for all users)
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [UserController::class, 'showHome'])->name('home');
-    Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
+  //  Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 });
 
 

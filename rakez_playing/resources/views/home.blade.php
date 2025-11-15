@@ -3,55 +3,55 @@
 @section('title', 'RAKEZ العقارية - اربح مشروعك الحصري')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 py-8 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen bg-gradient-to-br from-[#f8f6f4] to-[#e8e2d8] py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
 
         <!-- Header -->
         <div class="text-center mb-12">
-            <div class="w-28 h-28 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl border-4 border-white/20 animate-pulse">
-                <i class="fas fa-gem text-white text-4xl"></i>
+            <div class="w-24 h-24 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-[#b2a292] shadow-lg">
+                <i class="fas fa-gem text-[#b2a292] text-3xl"></i>
             </div>
-            <h1 class="text-5xl font-bold text-white mb-4">RAKEZ العقارية</h1>
-            <p class="text-xl text-blue-200 max-w-2xl mx-auto">اختر نوع المشروع وادر العجلة لتربح!</p>
+            <h1 class="text-4xl font-bold text-[#1f333a] mb-4">RAKEZ العقارية</h1>
+            <p class="text-lg text-[#1f333a] opacity-80 max-w-2xl mx-auto">اختر نوع المشروع وادر العجلة لتربح!</p>
         </div>
 
         <!-- Project Type Selection -->
-        <div id="typeSelection" class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 mb-8">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">اختر نوع المشروع</h2>
+        <div id="typeSelection" class="bg-white rounded-2xl p-8 shadow-lg border border-[#b2a292] mb-8">
+            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">اختر نوع المشروع</h2>
 
             <div class="grid md:grid-cols-3 gap-6 mb-8">
                 <!-- Apartment Box -->
                 <div class="project-type-card" data-type="apartment">
-                    <div class="card-icon bg-gradient-to-br from-blue-500 to-blue-600">
-                        <i class="fas fa-building text-white text-3xl"></i>
+                    <div class="card-icon bg-[#1f333a]">
+                        <i class="fas fa-building text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">شقق سكنية</h3>
-                    <p class="text-blue-200 mb-4">شقق سكنية بخصومات حصرية</p>
-                    <div class="card-btn bg-blue-500 hover:bg-blue-600">
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">شقق سكنية</h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">شقق سكنية بخصومات حصرية</p>
+                    <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>ابدأ الدوران
                     </div>
                 </div>
 
                 <!-- Floor Box -->
                 <div class="project-type-card" data-type="floor">
-                    <div class="card-icon bg-gradient-to-br from-green-500 to-green-600">
-                        <i class="fas fa-layer-group text-white text-3xl"></i>
+                    <div class="card-icon bg-[#1f333a]">
+                        <i class="fas fa-layer-group text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">دور كامل</h3>
-                    <p class="text-blue-200 mb-4">دور كامل بخصم مميز</p>
-                    <div class="card-btn bg-green-500 hover:bg-green-600">
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">دور كامل</h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">دور كامل بخصم مميز</p>
+                    <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>ابدأ الدوران
                     </div>
                 </div>
 
                 <!-- Unit Box -->
                 <div class="project-type-card" data-type="unit">
-                    <div class="card-icon bg-gradient-to-br from-purple-500 to-purple-600">
-                        <i class="fas fa-home text-white text-3xl"></i>
+                    <div class="card-icon bg-[#1f333a]">
+                        <i class="fas fa-home text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">وحدات سكنية</h3>
-                    <p class="text-blue-200 mb-4">وحدات سكنية بخصومات حصرية</p>
-                    <div class="card-btn bg-purple-500 hover:bg-purple-600">
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">وحدات سكنية</h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">وحدات سكنية بخصومات حصرية</p>
+                    <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>ابدأ الدوران
                     </div>
                 </div>
@@ -59,14 +59,14 @@
         </div>
 
         <!-- Lucky Wheel Container -->
-        <div id="wheelContainer" class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 mb-8 hidden">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">عجلة الحظ - <span id="selectedTypeText"></span></h2>
+        <div id="wheelContainer" class="bg-white rounded-2xl p-8 shadow-lg border border-[#b2a292] mb-8 hidden">
+            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">عجلة الحظ - <span id="selectedTypeText"></span></h2>
 
             <div class="relative mb-8">
                 <!-- Wheel Container -->
-                <div class="relative mx-auto" style="width: 400px; height: 400px;">
+                <div class="relative mx-auto" style="width: 350px; height: 350px;">
                     <!-- Wheel Base -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-700 rounded-full shadow-2xl border-8 border-yellow-400"></div>
+                    <div class="absolute inset-0 bg-[#1f333a] rounded-full shadow-lg border-4 border-[#b2a292]"></div>
 
                     <!-- Wheel Sections -->
                     <div id="wheelSections" class="absolute inset-4 rounded-full overflow-hidden">
@@ -74,11 +74,11 @@
                     </div>
 
                     <!-- Center Circle -->
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full border-4 border-white shadow-2xl z-20"></div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#b2a292] rounded-full border-4 border-white shadow-lg z-20"></div>
 
                     <!-- Auto Spin Indicator -->
-                    <div id="autoSpinIndicator" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full border-4 border-white text-white font-bold shadow-2xl z-30 flex items-center justify-center">
-                        <i class="fas fa-sync-alt fa-spin text-lg"></i>
+                    <div id="autoSpinIndicator" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-[#1f333a] rounded-full border-2 border-white text-white font-bold shadow-lg z-30 flex items-center justify-center">
+                        <i class="fas fa-sync-alt fa-spin text-sm"></i>
                     </div>
                 </div>
             </div>
@@ -86,24 +86,24 @@
             <!-- Back Button -->
             <div class="text-center">
                 <button onclick="showTypeSelection()"
-                        class="bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white px-8 py-3 rounded-2xl transition duration-300 transform hover:scale-105">
+                        class="bg-[#1f333a] hover:bg-[#2a444d] text-white px-6 py-3 rounded-xl transition-colors duration-200">
                     <i class="fas fa-arrow-right ml-2"></i>العودة للاختيار
                 </button>
             </div>
         </div>
 
         <!-- Check Wins Section -->
-        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20 mb-8">
-            <h3 class="text-2xl font-bold text-white mb-6 text-center">
-                <i class="fas fa-trophy text-yellow-400 ml-2"></i>تحقق من فوزك
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-[#b2a292] mb-8">
+            <h3 class="text-xl font-bold text-[#1f333a] mb-6 text-center">
+                <i class="fas fa-trophy text-[#b2a292] ml-2"></i>تحقق من فوزك
             </h3>
             <div class="max-w-md mx-auto">
                 <div class="flex space-x-4 space-x-reverse">
                     <input type="tel" id="checkPhone"
-                           class="flex-1 px-4 py-4 bg-white/20 border border-white/30 rounded-2xl focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 text-right text-white placeholder-white/70 text-lg"
+                           class="flex-1 px-4 py-3 bg-white border border-[#b2a292] rounded-xl focus:ring-2 focus:ring-[#1f333a] focus:border-[#1f333a] text-right text-[#1f333a] placeholder-[#1f333a]/50"
                            placeholder="أدخل رقم الجوال">
                     <button onclick="checkUserWins()"
-                            class="bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white px-8 py-4 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg font-semibold">
+                            class="bg-[#1f333a] hover:bg-[#2a444d] text-white px-6 py-3 rounded-xl transition-colors duration-200 font-medium">
                         <i class="fas fa-search ml-2"></i>تحقق
                     </button>
                 </div>
@@ -113,52 +113,26 @@
             </div>
         </div>
 
-        <!-- How to Play -->
-        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl border border-white/20">
-            <h3 class="text-2xl font-bold text-white mb-8 text-center">كيفية اللعب</h3>
-            <div class="grid md:grid-cols-3 gap-6 text-center">
-                <div class="bg-white/10 rounded-2xl p-6 border border-white/20">
-                    <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-mouse-pointer text-white text-2xl"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">اختر النوع</h4>
-                    <p class="text-blue-200">اختر نوع المشروع المفضل</p>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-6 border border-white/20">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-sync-alt text-white text-2xl"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">ادر العجلة</h4>
-                    <p class="text-blue-200">سيتم الدوران تلقائياً</p>
-                </div>
-                <div class="bg-white/10 rounded-2xl p-6 border border-white/20">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-gift text-white text-2xl"></i>
-                    </div>
-                    <h4 class="text-white font-bold text-lg mb-2">اربح الجائزة</h4>
-                    <p class="text-blue-200">سجل رقمك لاستلام الجائزة</p>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 
 <!-- Winning Result Modal -->
-<div id="winModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-    <div class="bg-gradient-to-br from-blue-600 to-purple-700 rounded-3xl p-8 max-w-md w-full mx-auto shadow-2xl border-4 border-yellow-400">
+<div id="winModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 p-4">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-auto shadow-2xl border border-[#b2a292]">
         <div class="text-center">
             <!-- Confetti Animation Container -->
             <div id="confettiContainer" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
 
-            <div class="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-white shadow-2xl">
-                <i class="fas fa-trophy text-white text-3xl"></i>
+            <div class="w-20 h-20 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-[#b2a292]">
+                <i class="fas fa-trophy text-[#b2a292] text-2xl"></i>
             </div>
-            <h3 class="text-3xl font-bold text-white mb-4">مبروك! لقد فزت</h3>
-            <div id="winResult" class="bg-white/20 rounded-2xl p-6 mb-6 border border-white/30">
+            <h3 class="text-2xl font-bold text-[#1f333a] mb-4">مبروك! لقد فزت</h3>
+            <div id="winResult" class="bg-[#f8f6f4] rounded-xl p-6 mb-6 border border-[#b2a292]">
                 <!-- Win details will be populated here -->
             </div>
             <button onclick="claimPrize()"
-                    class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 text-lg shadow-lg">
+                    class="w-full bg-[#1f333a] hover:bg-[#2a444d] text-white font-medium py-3 px-6 rounded-xl transition-colors duration-200">
                 <i class="fas fa-check-circle ml-2"></i>سجل فوزك
             </button>
         </div>
@@ -166,14 +140,14 @@
 </div>
 
 <!-- Phone Input Modal -->
-<div id="phoneModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-    <div class="bg-gradient-to-br from-green-600 to-emerald-700 rounded-3xl p-8 max-w-md w-full mx-auto shadow-2xl border-4 border-white/30">
+<div id="phoneModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50 p-4">
+    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-auto shadow-2xl border border-[#b2a292]">
         <div class="text-center mb-6">
-            <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-white">
-                <i class="fas fa-mobile-alt text-white text-2xl"></i>
+            <div class="w-16 h-16 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-[#b2a292]">
+                <i class="fas fa-mobile-alt text-[#b2a292] text-xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-white mb-2">سجل فوزك</h3>
-            <p class="text-green-200">أدخل رقم جوالك لتأكيد الفوز</p>
+            <h3 class="text-xl font-bold text-[#1f333a] mb-2">سجل فوزك</h3>
+            <p class="text-[#1f333a] opacity-70">أدخل رقم جوالك لتأكيد الفوز</p>
         </div>
 
         <form id="claimForm" class="space-y-6">
@@ -181,21 +155,21 @@
             <input type="hidden" id="selectedProjectId" name="project_id">
 
             <div class="space-y-2">
-                <label for="phone" class="block text-sm font-medium text-white text-right">
+                <label for="phone" class="block text-sm font-medium text-[#1f333a] text-right">
                     <i class="fas fa-phone ml-2"></i>رقم الجوال
                 </label>
                 <input type="tel" id="phone" name="phone" required
-                       class="w-full px-4 py-4 bg-white/20 border border-white/30 rounded-2xl focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 text-right text-white placeholder-white/70 text-lg transition duration-200"
+                       class="w-full px-4 py-3 bg-white border border-[#b2a292] rounded-xl focus:ring-2 focus:ring-[#1f333a] focus:border-[#1f333a] text-right text-[#1f333a] placeholder-[#1f333a]/50 transition-colors duration-200"
                        placeholder="05XXXXXXXX">
             </div>
 
             <div class="flex space-x-4 space-x-reverse">
                 <button type="submit"
-                        class="flex-1 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-4 px-6 rounded-2xl transition duration-300 transform hover:scale-105 shadow-lg">
+                        class="flex-1 bg-[#1f333a] hover:bg-[#2a444d] text-white font-medium py-3 px-6 rounded-xl transition-colors duration-200">
                     <i class="fas fa-check ml-2"></i>تأكيد
                 </button>
                 <button type="button" onclick="closePhoneModal()"
-                        class="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white px-6 py-4 rounded-2xl transition duration-300 transform hover:scale-105">
+                        class="flex-1 bg-[#f8f6f4] hover:bg-[#b2a292] hover:text-white text-[#1f333a] px-6 py-3 rounded-xl transition-colors duration-200 border border-[#b2a292]">
                     <i class="fas fa-times ml-2"></i>إلغاء
                 </button>
             </div>
@@ -204,58 +178,51 @@
 </div>
 
 <!-- Loading Overlay -->
-<div id="loadingOverlay" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50">
+<div id="loadingOverlay" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden z-50">
     <div class="text-center">
-        <div class="w-20 h-20 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p class="text-white text-xl font-semibold" id="loadingText">جاري الدوران...</p>
+        <div class="w-16 h-16 border-4 border-[#1f333a] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p class="text-[#1f333a] text-lg font-medium" id="loadingText">جاري الدوران...</p>
     </div>
 </div>
 
 <style>
 .project-type-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border-radius: 1.5rem;
+    background: white;
+    border-radius: 1rem;
     padding: 1.5rem;
     text-align: center;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #b2a292;
     transition: all 0.3s ease;
     transform: scale(1);
     cursor: pointer;
 }
 
 .project-type-card:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .card-icon {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 1rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem auto;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid #b2a292;
 }
 
 .card-btn {
     color: white;
-    font-weight: 600;
+    font-weight: 500;
     padding: 0.75rem 1.5rem;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     transition: all 0.3s ease;
-    transform: scale(1);
     width: 100%;
     display: block;
     cursor: pointer;
-}
-
-.card-btn:hover {
-    transform: scale(1.05);
 }
 
 @keyframes confetti-fall {
@@ -265,9 +232,9 @@
 
 .confetti {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background: #f00;
+    width: 8px;
+    height: 8px;
+    background: #b2a292;
     animation: confetti-fall 3s linear forwards;
 }
 
@@ -283,10 +250,6 @@
 .clip-triangle {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
-
-.shadow-3xl {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
 </style>
 
 <script>
@@ -296,12 +259,12 @@ let isSpinning = false;
 
 // Wheel sections with different prize levels for visual effect
 const wheelSections = [
-    { color: 'from-yellow-400 to-orange-500', label: 'جائزة', prize: 'مميز' },
-    { color: 'from-green-400 to-green-500', label: 'جائزة', prize: 'رائعة' },
-    { color: 'from-blue-400 to-blue-500', label: 'جائزة', prize: 'مذهلة' },
-    { color: 'from-purple-400 to-purple-500', label: 'جائزة', prize: 'حصري' },
-    { color: 'from-pink-400 to-pink-500', label: 'جائزة', prize: 'خاص' },
-    { color: 'from-teal-400 to-teal-500', label: 'جائزة', prize: 'فريدة' }
+    { color: 'bg-[#b2a292]', label: 'جائزة', prize: 'مميز' },
+    { color: 'bg-[#1f333a]', label: 'جائزة', prize: 'رائعة' },
+    { color: 'bg-[#b2a292]', label: 'جائزة', prize: 'مذهلة' },
+    { color: 'bg-[#1f333a]', label: 'جائزة', prize: 'حصري' },
+    { color: 'bg-[#b2a292]', label: 'جائزة', prize: 'خاص' },
+    { color: 'bg-[#1f333a]', label: 'جائزة', prize: 'فريدة' }
 ];
 
 // Show type selection and hide wheel
@@ -351,10 +314,10 @@ function initializeWheel() {
         sectionElement.style.transform = `rotate(${rotation}deg)`;
         sectionElement.innerHTML = `
             <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-1/2 h-1/2 origin-bottom" style="transform: rotate(${sectionAngle}deg);">
-                <div class="w-full h-full bg-gradient-to-br ${section.color} clip-triangle"></div>
-                <div class="absolute top-12 left-1/2 transform -translate-x-1/2 -rotate-90 text-white text-xs font-bold text-center" style="width: 80px;">
+                <div class="w-full h-full ${section.color} clip-triangle"></div>
+                <div class="absolute top-10 left-1/2 transform -translate-x-1/2 -rotate-90 text-white text-xs font-bold text-center" style="width: 70px;">
                     <div>${section.label}</div>
-                    <div class="text-yellow-300">${section.prize}</div>
+                    <div class="text-[#b2a292]">${section.prize}</div>
                 </div>
             </div>
         `;
@@ -442,19 +405,19 @@ function showWinResult(project, type) {
 
     winResult.innerHTML = `
         <div class="text-center">
-            <h4 class="text-2xl font-bold text-white mb-3">${project.name}</h4>
-            <div class="space-y-3 text-white/90">
+            <h4 class="text-xl font-bold text-[#1f333a] mb-3">${project.name}</h4>
+            <div class="space-y-3 text-[#1f333a]">
                 <div class="flex justify-between items-center">
                     <span>نوع المشروع:</span>
-                    <span class="font-semibold text-yellow-300">${typeNames[type]}</span>
+                    <span class="font-semibold">${typeNames[type]}</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span>الخصم:</span>
-                    <span class="font-semibold text-green-300">${project.formatted_value_discount}</span>
+                    <span class="font-semibold">${project.formatted_value_discount}</span>
                 </div>
                 <div class="flex justify-between items-center">
                     <span>الفائزين السابقين:</span>
-                    <span class="font-semibold ${project.winners_count > 0 ? 'text-orange-300' : 'text-green-300'}">${project.winners_count}</span>
+                    <span class="font-semibold">${project.winners_count}</span>
                 </div>
             </div>
         </div>
@@ -466,15 +429,15 @@ function showWinResult(project, type) {
 // Create confetti effect
 function createConfetti() {
     const container = document.getElementById('confettiContainer');
-    const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7'];
+    const colors = ['#b2a292', '#1f333a', '#8a7a6a', '#2a444d'];
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
         confetti.style.left = Math.random() * 100 + '%';
         confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.width = Math.random() * 10 + 5 + 'px';
-        confetti.style.height = Math.random() * 10 + 5 + 'px';
+        confetti.style.width = Math.random() * 8 + 4 + 'px';
+        confetti.style.height = Math.random() * 8 + 4 + 'px';
         confetti.style.animationDelay = Math.random() * 2 + 's';
         container.appendChild(confetti);
 
@@ -527,7 +490,13 @@ document.getElementById('claimForm').addEventListener('submit', async function(e
         if (data.success) {
             closePhoneModal();
             loadingOverlay.classList.add('hidden');
-            showSuccessMessage('مبروك! تم تسجيل فوزك بنجاح.');
+
+            let successMessage = 'مبروك! تم تسجيل فوزك بنجاح.';
+            if (data.winner && data.winner.remaining_wins > 0) {
+                successMessage += ` متبقي لك ${data.winner.remaining_wins} فرص للفوز.`;
+            }
+
+            alert(successMessage);
         } else {
             loadingOverlay.classList.add('hidden');
             alert('خطأ: ' + data.message);
@@ -559,23 +528,37 @@ async function checkUserWins() {
         const winsResult = document.getElementById('winsResult');
 
         if (data.success) {
+            let statusMessage = '';
+            if (data.has_reached_limit) {
+                statusMessage = `<div class="bg-red-100 border border-red-300 rounded-xl p-4 mb-4 text-center">
+                    <i class="fas fa-info-circle text-red-600 text-lg mb-2"></i>
+                    <p class="text-red-700">لقد وصلت إلى الحد الأقصى للفوز (3 مشاريع)</p>
+                </div>`;
+            } else {
+                statusMessage = `<div class="bg-green-100 border border-green-300 rounded-xl p-4 mb-4 text-center">
+                    <i class="fas fa-info-circle text-green-600 text-lg mb-2"></i>
+                    <p class="text-green-700">متبقي لك ${data.remaining_wins} فرص للفوز</p>
+                </div>`;
+            }
+
             if (data.wins.length > 0) {
                 winsResult.innerHTML = `
-                    <div class="bg-white/20 border border-white/30 rounded-2xl p-6">
-                        <h4 class="text-xl font-bold text-white mb-4 text-center">
-                            <i class="fas fa-trophy text-yellow-400 ml-2"></i>عدد الفوز: ${data.total_wins}
+                    <div class="bg-[#f8f6f4] border border-[#b2a292] rounded-xl p-6">
+                        ${statusMessage}
+                        <h4 class="text-lg font-bold text-[#1f333a] mb-4 text-center">
+                            <i class="fas fa-trophy text-[#b2a292] ml-2"></i>عدد الفوز: ${data.total_wins}/3
                         </h4>
                         <div class="space-y-4">
                             ${data.wins.map(win => `
-                                <div class="bg-white/10 rounded-xl p-4 border border-white/20">
-                                    <h5 class="font-bold text-lg text-white text-right">${win.project.name}</h5>
+                                <div class="bg-white rounded-lg p-4 border border-[#b2a292]">
+                                    <h5 class="font-bold text-[#1f333a] text-right">${win.project.name}</h5>
                                     <div class="flex justify-between items-center mt-2">
-                                        <span class="text-white/80">الخصم:</span>
-                                        <span class="font-semibold text-green-300">${win.project.formatted_value_discount}</span>
+                                        <span class="text-[#1f333a] opacity-70">الخصم:</span>
+                                        <span class="font-semibold">${win.project.formatted_value_discount}</span>
                                     </div>
                                     <div class="flex justify-between items-center mt-1">
-                                        <span class="text-white/80">التاريخ:</span>
-                                        <span class="text-white/60 text-sm">${win.won_at}</span>
+                                        <span class="text-[#1f333a] opacity-70">التاريخ:</span>
+                                        <span class="text-[#1f333a] opacity-60 text-sm">${win.won_at}</span>
                                     </div>
                                 </div>
                             `).join('')}
@@ -584,9 +567,10 @@ async function checkUserWins() {
                 `;
             } else {
                 winsResult.innerHTML = `
-                    <div class="bg-yellow-500/20 border border-yellow-400/30 rounded-2xl p-6 text-center">
-                        <i class="fas fa-info-circle text-yellow-300 text-2xl mb-2"></i>
-                        <p class="text-yellow-200">لا توجد فوز مسجلة لهذا الرقم</p>
+                    <div class="bg-yellow-100 border border-yellow-300 rounded-xl p-6 text-center">
+                        <i class="fas fa-info-circle text-yellow-600 text-lg mb-2"></i>
+                        <p class="text-yellow-700">لا توجد فوز مسجلة لهذا الرقم</p>
+                        <p class="text-yellow-700 mt-2">متبقي لك 3 فرص للفوز</p>
                     </div>
                 `;
             }
@@ -613,10 +597,6 @@ function showLoading(message) {
 function hideLoading() {
     const loadingOverlay = document.getElementById('loadingOverlay');
     loadingOverlay.classList.add('hidden');
-}
-
-function showSuccessMessage(message) {
-    alert(message);
 }
 
 // Initialize when page loads
