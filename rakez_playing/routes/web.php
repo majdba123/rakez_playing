@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 });
 
+
 // Admin routes - protection handled in controllers
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     // Admin dashboard
@@ -39,8 +40,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'])->name('projects.edit');
     Route::put('/projects/{project}', [ProjectController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
-});
 
+    // Winners routes
+    Route::get('/winners', [ProjectController::class, 'winners'])->name('winners.index');
+    Route::get('/winners/export', [ProjectController::class, 'exportWinners'])->name('winners.export');
+});
 
 
 

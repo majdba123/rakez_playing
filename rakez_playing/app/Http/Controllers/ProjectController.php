@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projects;
+use App\Models\Winner;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,7 @@ class ProjectController extends Controller
     public function store(Request $request): JsonResponse
     {
         $this->checkAdmin();
-        
+
         $request->validate([
             'name' => 'required|string|max:255|unique:projects,name',
             'type' => 'required|in:apartment,floor,unit',
@@ -68,7 +69,7 @@ class ProjectController extends Controller
 
         try {
             Projects::create($request->all());
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Project created successfully!',
@@ -106,7 +107,7 @@ class ProjectController extends Controller
     public function update(Request $request, Projects $project): JsonResponse
     {
         $this->checkAdmin();
-        
+
         $request->validate([
             'name' => 'required|string|max:255|unique:projects,name,' . $project->id,
             'type' => 'required|in:apartment,floor,unit',
@@ -129,7 +130,7 @@ class ProjectController extends Controller
 
         try {
             $project->update($request->all());
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Project updated successfully!',
@@ -149,10 +150,10 @@ class ProjectController extends Controller
     public function destroy(Projects $project): JsonResponse
     {
         $this->checkAdmin();
-        
+
         try {
             $project->delete();
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Project deleted successfully!'
@@ -163,5 +164,93 @@ class ProjectController extends Controller
                 'message' => 'Error deleting project: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    /**
+     * Display a listing of winners with statistics.
+     */
+    public function winners()
+    {
+        $this->checkAdmin();
+
+        // Get all winners with project information
+        $winners = Winner::with('project')
+            ->latest()
+            ->paginate(20);
+
+        // Statistics
+        $totalWinners = Winner::count();
+        $uniquePhones = Winner::distinct('phone')->count('phone');
+        $totalProjects = Projects::count();
+
+        // Winners by project type
+        $winnersByType = Winner::selectRaw('project_type, COUNT(*) as count')
+            ->groupBy('project_type')
+            ->get()
+            ->pluck('count', 'project_type');
+
+        // Recent winners (last 7 days)
+        $recentWinners = Winner::where('created_at', '>=', now()->subDays(7))->count();
+
+        return view('admin.winners.index', compact(
+            'winners',
+            'totalWinners',
+            'uniquePhones',
+            'totalProjects',
+            'winnersByType',
+            'recentWinners'
+        ));
+    }
+
+    /**
+     * Export winners to CSV
+     */
+    public function exportWinners()
+    {
+        $this->checkAdmin();
+
+        $winners = Winner::with('project')->latest()->get();
+
+        $fileName = 'winners_' . date('Y-m-d_H-i-s') . '.csv';
+
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+        ];
+
+        $callback = function() use ($winners) {
+            $file = fopen('php://output', 'w');
+
+            // Add BOM for UTF-8
+            fputs($file, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
+
+            // Add headers
+            fputcsv($file, [
+                'رقم الجوال',
+                'الاسم',
+                'المشروع',
+                'نوع المشروع',
+                'الخصم',
+                'نوع الخصم',
+                'تاريخ الفوز'
+            ]);
+
+            // Add data
+            foreach ($winners as $winner) {
+                fputcsv($file, [
+                    $winner->phone,
+                    $winner->name ?? 'غير مسجل',
+                    $winner->project->name,
+                    $winner->project_type,
+                    $winner->project->value_discount,
+                    $winner->project->type_discount,
+                    $winner->created_at->format('Y-m-d H:i:s')
+                ]);
+            }
+
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
     }
 }

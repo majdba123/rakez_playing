@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Projects;
+use App\Models\Winner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,8 +63,11 @@ class UserController extends Controller
         }
 
         $users = User::all();
-        $projectsCount = \App\Models\Projects::count();
-        return view('admin.dashboard', compact('users', 'projectsCount'));
+        $projectsCount = Projects::count();
+        $winnersCount = Winner::count();
+        $uniqueWinners = Winner::distinct('phone')->count('phone');
+
+        return view('admin.dashboard', compact('users', 'projectsCount', 'winnersCount', 'uniqueWinners'));
     }
 
     /**
