@@ -44,10 +44,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
 
 
-
-// Game API routes (using web middleware)
-Route::middleware(['auth'])->prefix('api')->group(function () {
-    Route::get('/game/projects', [GameController::class, 'getRandomProjects']);
-    Route::post('/game/select-project', [GameController::class, 'selectProject']);
-    Route::get('/game/result', [GameController::class, 'getGameResult']);
+// Public game API routes
+Route::prefix('api')->group(function () {
+    Route::get('/game/projects/{type}', [GameController::class, 'getRandomProjectByType']);
+    Route::get('/game/projects-priority/{type}', [GameController::class, 'getPriorityProjectsByType']);
+    Route::post('/game/claim-project', [GameController::class, 'claimProject']);
+    Route::get('/game/user-wins', [GameController::class, 'getUserWins']);
+    Route::get('/game/stats', [GameController::class, 'getProjectStats']);
 });

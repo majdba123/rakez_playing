@@ -9,7 +9,15 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Show login form
+     * Show home page (public - no auth required)
+     */
+    public function showHome(Request $request)
+    {
+        return view('home');
+    }
+
+    /**
+     * Show login form (for admin only)
      */
     public function showLogin()
     {
@@ -17,7 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Handle user login - API style
+     * Handle admin login
      */
     public function login(Request $request)
     {
@@ -33,13 +41,11 @@ class UserController extends Controller
             ]);
         }
 
-        // Check if user is admin using model method
         if ($user->isAdmin()) {
             Auth::login($user);
             return redirect()->route('admin.dashboard');
         }
 
-        // If user exists but not admin
         return back()->withErrors([
             'phone' => 'أنت لست مسؤولاً في النظام.',
         ]);

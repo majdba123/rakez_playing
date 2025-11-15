@@ -30,9 +30,9 @@ class Projects extends Model
     public static function getTypes()
     {
         return [
-            self::TYPE_APARTMENT => 'Apartment',
-            self::TYPE_FLOOR => 'Floor',
-            self::TYPE_UNIT => 'Unit',
+            self::TYPE_APARTMENT => 'apartment',
+            self::TYPE_FLOOR => 'floor',
+            self::TYPE_UNIT => 'unit',
         ];
     }
 
@@ -61,18 +61,40 @@ class Projects extends Model
     public function getFormattedValueDiscountAttribute()
     {
         if (!$this->value_discount) return 'N/A';
-        
+
         if ($this->type_discount === self::DISCOUNT_PERCENTAGE) {
             return $this->value_discount . '%';
         }
-        
+
         return number_format($this->value_discount, 2);
     }
 
-    public function selectedByUsers()
+    /**
+     * Relationship with winners - FIXED foreign key
+     */
+    public function winners()
     {
-        return $this->belongsToMany(User::class, 'user_projects')
-                    ->withTimestamps()
-                    ->withPivot('selected_at');
+        return $this->hasMany(Winner::class, 'project_id'); // Specify the foreign key
+    }
+
+    public function getWinnersCountAttribute()
+    {
+        return $this->winners()->count();
+    }
+
+    /**
+     * Scope for projects without winners
+     */
+    public function scopeWithoutWinners($query)
+    {
+        return $query->whereDoesntHave('winners');
+    }
+
+    /**
+     * Scope for projects with winners
+     */
+    public function scopeWithWinners($query)
+    {
+        return $query->has('winners');
     }
 }
