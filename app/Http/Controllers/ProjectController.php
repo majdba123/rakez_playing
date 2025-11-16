@@ -311,22 +311,21 @@ public function uploadProjects(Request $request): JsonResponse
     /**
      * Remove the specified project from storage.
      */
-    public function destroy(Projects $project): JsonResponse
+    public function destroy(Projects $project)
     {
         $this->checkAdmin();
 
         try {
             $project->delete();
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Project deleted successfully!'
-            ]);
+            // Redirect directly
+            return redirect('https://rakez.com.sa/admin/projects')
+                ->with('success', 'Project deleted successfully!');
+
         } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Error deleting project: ' . $e->getMessage()
-            ], 500);
+            // Redirect back with error
+            return redirect('https://rakez.com.sa/admin/projects')
+                ->with('error', 'Error deleting project: ' . $e->getMessage());
         }
     }
 
