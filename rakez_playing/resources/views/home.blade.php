@@ -49,8 +49,8 @@
                     <div class="card-icon bg-[#1f333a]">
                         <i class="fas fa-home text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">وحدات سكنية</h3>
-                    <p class="text-[#1f333a] opacity-70 mb-4">وحدات سكنية بخصومات حصرية</p>
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">فلل سكنية</h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">وحدات  فلل تاون هاوس بيت هاوس </p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
