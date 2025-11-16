@@ -6,13 +6,24 @@
 <div class="min-h-screen bg-gradient-to-br from-[#f8f6f4] to-[#e8e2d8] py-8 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
 
-        <!-- Header -->
+        <!-- Header with Logo -->
         <div class="text-center mb-12">
-            <div class="w-24 h-24 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-[#b2a292] shadow-lg">
-                <i class="fas fa-gem text-[#b2a292] text-3xl"></i>
+            <!-- Logo Container -->
+            <div class="mb-8">
+                <div class="w-48 h-48 mx-auto bg-white rounded-full p-4 shadow-lg border-4 border-[#b2a292] flex items-center justify-center">
+                    <img src="{{ asset('images/logo.jpeg') }}"
+                         alt="RAKEZ العقارية"
+                         class="w-full h-full object-contain rounded-full"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <!-- Fallback if image doesn't load -->
+                    <div class="hidden w-full h-full bg-[#1f333a] rounded-full flex items-center justify-center">
+                        <i class="fas fa-gem text-[#b2a292] text-4xl"></i>
+                    </div>
+                </div>
             </div>
+
             <h1 class="text-4xl font-bold text-[#1f333a] mb-4">RAKEZ العقارية</h1>
-            <p class="text-lg text-[#1f333a] opacity-80 max-w-2xl mx-auto"> استكشف فرصتك العقارية</p>
+            <p class="text-lg text-[#1f333a] opacity-80 max-w-2xl mx-auto">استكشف فرصتك العقارية</p>
         </div>
 
         <!-- Project Type Selection -->
@@ -25,8 +36,8 @@
                     <div class="card-icon bg-[#1f333a]">
                         <i class="fas fa-building text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">شقق سكنية</h3>
-                    <p class="text-[#1f333a] opacity-70 mb-4">شقق سكنية بخصومات حصرية</p>
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">شقق </h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">شقق  بخصومات حصرية</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
@@ -37,7 +48,7 @@
                     <div class="card-icon bg-[#1f333a]">
                         <i class="fas fa-layer-group text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">دور كامل</h3>
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">أدوار </h3>
                     <p class="text-[#1f333a] opacity-70 mb-4">دور كامل بخصم مميز</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>اكتشف فرصتك
@@ -49,8 +60,8 @@
                     <div class="card-icon bg-[#1f333a]">
                         <i class="fas fa-home text-[#b2a292] text-2xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">فلل سكنية</h3>
-                    <p class="text-[#1f333a] opacity-70 mb-4">وحدات  فلل تاون هاوس بيت هاوس </p>
+                    <h3 class="text-lg font-bold text-[#1f333a] mb-3">فلل </h3>
+                    <p class="text-[#1f333a] opacity-70 mb-4">  تاون هاوس  & بنتهاوس</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
                         <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
@@ -60,7 +71,7 @@
 
         <!-- Lucky Wheel Container -->
         <div id="wheelContainer" class="bg-white rounded-2xl p-8 shadow-lg border border-[#b2a292] mb-8 hidden">
-            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">  عرضك السكني <span id="selectedTypeText"></span></h2>
+            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">عرضك السكني <span id="selectedTypeText"></span></h2>
 
             <div class="relative mb-8">
                 <!-- Wheel Container -->
@@ -112,8 +123,6 @@
                 <!-- Wins will be populated here -->
             </div>
         </div>
-
-
     </div>
 </div>
 
@@ -127,7 +136,7 @@
             <div class="w-20 h-20 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-[#b2a292]">
                 <i class="fas fa-trophy text-[#b2a292] text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-[#1f333a] mb-4">خصمك جاهز الحين </h3>
+            <h3 class="text-2xl font-bold text-[#1f333a] mb-4">خصمك جاهز الحين</h3>
             <div id="winResult" class="bg-[#f8f6f4] rounded-xl p-6 mb-6 border border-[#b2a292]">
                 <!-- Win details will be populated here -->
             </div>
@@ -249,6 +258,14 @@
 
 .clip-triangle {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Logo responsive adjustments */
+@media (max-width: 640px) {
+    .logo-container {
+        width: 120px !important;
+        height: 120px !important;
+    }
 }
 </style>
 
@@ -611,11 +628,6 @@ document.addEventListener('DOMContentLoaded', function() {
             showWheelForType(type);
         });
     });
-
-    // Test if elements exist
-    console.log('Type selection:', document.getElementById('typeSelection'));
-    console.log('Wheel container:', document.getElementById('wheelContainer'));
-    console.log('Wheel sections:', document.getElementById('wheelSections'));
 });
 </script>
 @endsection

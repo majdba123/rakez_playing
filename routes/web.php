@@ -44,11 +44,15 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Winners routes
     Route::get('/winners', [ProjectController::class, 'winners'])->name('winners.index');
     Route::get('/winners/export', [ProjectController::class, 'exportWinners'])->name('winners.export');
+
+    // routes/web.php
+    Route::post('/upload-projects', [ProjectController::class, 'uploadProjects'])->name('projects.upload');
+
+
 });
 
 
 
-// Public game API routes
 Route::prefix('api')->group(function () {
     Route::get('/game/projects/{type}', [GameController::class, 'getRandomProjectByType']);
     Route::get('/game/projects-priority/{type}', [GameController::class, 'getPriorityProjectsByType']);
