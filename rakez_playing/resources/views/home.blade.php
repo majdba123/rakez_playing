@@ -12,7 +12,7 @@
                 <i class="fas fa-gem text-[#b2a292] text-3xl"></i>
             </div>
             <h1 class="text-4xl font-bold text-[#1f333a] mb-4">RAKEZ العقارية</h1>
-            <p class="text-lg text-[#1f333a] opacity-80 max-w-2xl mx-auto">اختر نوع المشروع وادر العجلة لتربح!</p>
+            <p class="text-lg text-[#1f333a] opacity-80 max-w-2xl mx-auto"> استكشف فرصتك العقارية</p>
         </div>
 
         <!-- Project Type Selection -->
@@ -28,7 +28,7 @@
                     <h3 class="text-lg font-bold text-[#1f333a] mb-3">شقق سكنية</h3>
                     <p class="text-[#1f333a] opacity-70 mb-4">شقق سكنية بخصومات حصرية</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
-                        <i class="fas fa-play ml-2"></i>ابدأ الدوران
+                        <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                     <h3 class="text-lg font-bold text-[#1f333a] mb-3">دور كامل</h3>
                     <p class="text-[#1f333a] opacity-70 mb-4">دور كامل بخصم مميز</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
-                        <i class="fas fa-play ml-2"></i>ابدأ الدوران
+                        <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@
                     <h3 class="text-lg font-bold text-[#1f333a] mb-3">وحدات سكنية</h3>
                     <p class="text-[#1f333a] opacity-70 mb-4">وحدات سكنية بخصومات حصرية</p>
                     <div class="card-btn bg-[#1f333a] hover:bg-[#2a444d]">
-                        <i class="fas fa-play ml-2"></i>ابدأ الدوران
+                        <i class="fas fa-play ml-2"></i>اكتشف فرصتك
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
 
         <!-- Lucky Wheel Container -->
         <div id="wheelContainer" class="bg-white rounded-2xl p-8 shadow-lg border border-[#b2a292] mb-8 hidden">
-            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">عجلة الحظ - <span id="selectedTypeText"></span></h2>
+            <h2 class="text-2xl font-bold text-[#1f333a] mb-8 text-center">  عرضك السكني <span id="selectedTypeText"></span></h2>
 
             <div class="relative mb-8">
                 <!-- Wheel Container -->
@@ -127,13 +127,13 @@
             <div class="w-20 h-20 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-[#b2a292]">
                 <i class="fas fa-trophy text-[#b2a292] text-2xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-[#1f333a] mb-4">مبروك! لقد فزت</h3>
+            <h3 class="text-2xl font-bold text-[#1f333a] mb-4">خصمك جاهز الحين </h3>
             <div id="winResult" class="bg-[#f8f6f4] rounded-xl p-6 mb-6 border border-[#b2a292]">
                 <!-- Win details will be populated here -->
             </div>
             <button onclick="claimPrize()"
                     class="w-full bg-[#1f333a] hover:bg-[#2a444d] text-white font-medium py-3 px-6 rounded-xl transition-colors duration-200">
-                <i class="fas fa-check-circle ml-2"></i>سجل فوزك
+                <i class="fas fa-check-circle ml-2"></i>فعل خصمك الأن
             </button>
         </div>
     </div>
@@ -146,7 +146,7 @@
             <div class="w-16 h-16 bg-[#1f333a] rounded-full flex items-center justify-center mx-auto mb-4 border-4 border-[#b2a292]">
                 <i class="fas fa-mobile-alt text-[#b2a292] text-xl"></i>
             </div>
-            <h3 class="text-xl font-bold text-[#1f333a] mb-2">سجل فوزك</h3>
+            <h3 class="text-xl font-bold text-[#1f333a] mb-2">فعل خصمك</h3>
             <p class="text-[#1f333a] opacity-70">أدخل رقم جوالك لتأكيد الفوز</p>
         </div>
 
@@ -278,9 +278,9 @@ function showWheelForType(type) {
     console.log('Showing wheel for type:', type);
 
     const typeNames = {
-        'apartment': 'شقق سكنية',
-        'floor': 'دور كامل',
-        'unit': 'وحدات سكنية'
+        'apartment': 'شقق ',
+        'floor': 'أدوار',
+        'unit': ' فلل(بنت هاوس & تاون هاوس)'
     };
 
     currentProjectType = type;

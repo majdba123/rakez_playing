@@ -19,10 +19,10 @@ Route::post('/users', [UserController::class, 'checkAndStore']);*/
 Route::get('/', [UserController::class, 'showLogin'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 
+Route::get('/home', [UserController::class, 'showHome'])->name('home');
 
 // Authenticated user routes (for all users)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [UserController::class, 'showHome'])->name('home');
   //  Route::get('/profile', [UserController::class, 'showProfile'])->name('profile');
 });
 
